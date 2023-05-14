@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "gen-bench": "node generator.js && node benchmark.js && node plot.js",
+    "gen": "node generator.js",
+    "bench": "node benchmark.js && node plot.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +15,10 @@
     "prettier": "^2.6.0"
   },
   "dependencies": {
-    "graphql": "^16.0.0"
+    "@graphql-tools/optimize": "^1.4.0",
+    "chartjs": "^0.3.24",
+    "chartjs-node-canvas": "^4.1.6",
+    "graphql": "^15.0.0",
+    "relay-compiler": "^12.0.0"
   }
 }
