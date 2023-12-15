@@ -1,4 +1,3 @@
-const { parse } = require("graphql");
 const { queryTemplates } = require("./config");
 
 const readAst = (value) => {
@@ -26,7 +25,7 @@ export const ${exportVar} = { kind: "Document", get definitions() { return this.
   },
   setGlobals(global) {
     // pre-load
-    require("graphql");
+    const { parse } = require("graphql");
   },
 };
 
@@ -47,6 +46,7 @@ export const ${exportVar} = { kind: "Document", get definitions() { return defs(
 `;
   },
   setGlobals(global) {
+    const { parse } = require("graphql");
     const opts = { noLocation: true };
     global.gqlDefs = (queryKey, queryStr) => parse(queryStr, opts).definitions;
     parse(`{ foo }`, opts);
@@ -127,10 +127,10 @@ const exportVarName = (queryEntryIndex, queryTemplateIndex) =>
   `result${queryEntryIndex * queryTemplates.length + queryTemplateIndex}`;
 
 const formats = {
-  // "json-parse": jsonParseFormat,
+  "json-parse": jsonParseFormat,
   // "parse-lazy": parseLazyFormat,
   "parse-lazy-optimized": parseLazyOptimizedFormat,
-  "parse-eager": parseEagerFormat,
+  // "parse-eager": parseEagerFormat,
   literal: literalFormat,
   "relay-ir": relayCompilerFormat,
 };

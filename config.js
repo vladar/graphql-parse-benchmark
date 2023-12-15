@@ -1,5 +1,5 @@
 const queriesPerChunk = 20;
-const chunksPerFormat = 5;
+const chunksPerFormat = 10;
 const warmupChunks = 0;
 
 const schemaSDL = `
